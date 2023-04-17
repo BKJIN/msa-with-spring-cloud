@@ -1,9 +1,20 @@
 server:
-  port: 9001
+  port: 0 #랜덤포트
 
 spring:
   application:
     name: user-service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password:
 
 eureka:
   client:
@@ -11,3 +22,18 @@ eureka:
     fetch-registry: true # EUREKA 서버로부터 인스턴스들의 정보를 주기적으로 가져올 것인지를 설정하는 속성. true 설정시, 갱신된 정보를 받겠다.
     service-url:
       defaultZone: http://127.0.0.1:8761/eureka
+  instance:
+#    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
+
+greeting:
+  message: Welcome to the Simple E-commerce.
+
+logging:
+  level:
+    com.example.userservice: DEBUG
+
+token:
+  expiration_time: 86400000
+  secret: '01234567890123456789012345678901234567890123456789'
