@@ -45,6 +45,14 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE #eureka 서버에 클라이언트 요청정보 전달
           predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE #eureka 서버에 클라이언트 요청정보 전달
+          predicates:
             - Path=/user-service/**
             - Method=GET
           filters:
@@ -85,3 +93,9 @@ spring:
 
 token:
   secret: '01234567890123456789012345678901234567890123456789'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace
