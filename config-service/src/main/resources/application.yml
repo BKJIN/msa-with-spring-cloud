@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: config-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   profiles:
     active: native
   cloud:
@@ -16,3 +21,8 @@ spring:
           uri: https://github.com/BKJIN/spring-cloud-config
 #          username: # private ???
 #          password: # private ???
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh

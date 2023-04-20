@@ -2,6 +2,7 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
-      name: ecommerce
-  profiles:
-    active: dev
+#      name: config-service #application.yml 불러옴
+      name: user-service
+#  profiles:
+#    active: dev
