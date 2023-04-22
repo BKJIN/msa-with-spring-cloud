@@ -35,7 +35,7 @@ public class SecurityConfig {
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
         http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("192.168.1.79")
+                .hasIpAddress("192.168.1.94")
                         .and()
                                 .addFilter(getAuthenticationFilter());
         http.headers().frameOptions().disable(); //frame으로 나뉘어져 있는 html 페이지 보이게 함(h2-console 페이지)
