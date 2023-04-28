@@ -19,8 +19,8 @@ spring:
         git:
 #          uri: file:///C:\Users\Jim\IdeaProjects\git-local-repo
           uri: https://github.com/BKJIN/spring-cloud-config
-#          username: # private ???
-#          password: # private ???
+#          username: # private repository
+#          password: # private repository
 management:
   endpoints:
     web:
